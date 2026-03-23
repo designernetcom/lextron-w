@@ -100,9 +100,11 @@
                                             <ul class="sub-menu" style="width: 400px;">
                                                 <li><a href="transducerized-tightening-system.html">Transducerized
                                                         Tightening System</a></li>
-                                                <li><a href="./automatic-screw-feeding-system.html">Automatic Screw Feeding System</a></li>
+                                                <li><a href="./automatic-screw-feeding-system.html">Automatic Screw
+                                                        Feeding System</a></li>
                                                 <li><a href="servo-press-system.html">Servo Press System</a></li>
-                                                <li><a href="smart-integrated-assembly-analysis.html">Smart Integrated Assembly Analysis</a></li>
+                                                <li><a href="smart-integrated-assembly-analysis.html">Smart Integrated
+                                                        Assembly Analysis</a></li>
                                             </ul>
                                         </li>
 
@@ -110,10 +112,49 @@
                                             <a href="#">Centronsys </a>
 
                                             <ul class="sub-menu" style="width: 250px;">
-                                                <li><a href="#">Feeding System</a></li>
-                                                <li><a href="#">Metering System</a></li>
+                                                <li><a href="#">Feeding System</a>
+                                                    <ul class="sub-menu" style="width: 300px;">
+                                                        <li><a href="">200L Feed platen pump</a></li>
+                                                        <li><a href="">
+                                                                20L Feed platen pump
+                                                            </a></li>
+                                                        <li><a href="">LOWER PUMP</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Metering System</a>
+                                                    <ul class="sub-menu" style="width: 300px;">
+                                                        <li><a href="">Plunger/Piston metering</a></li>
+                                                        <li><a href="">
+
+                                                                Miflo MF
+                                                            </a></li>
+                                                        <li><a href="">
+                                                                Enflo EF
+                                                            </a></li>
+
+                                                        <li><a href="">
+
+                                                                Cyflo CF
+                                                            </a></li>
+
+                                                    </ul>
+
+                                                </li>
                                                 <li><a href="#">Dispensing Module</a></li>
                                                 <li><a href="#">Transfer System</a></li>
+                                                <li><a href="">Annex</a>
+                                                       <ul class="sub-menu" style="width: 300px;">
+                                                        <li><a href="">Air-controlled pressure regulating valve</a></li>
+                                                        <li><a href="">
+
+                                                                
+Flow Meter
+                                                            </a></li>
+                                                        
+                                                    </ul>
+                                                </li>
+                                                <li><a href="">Glue coating system application</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -2575,21 +2616,21 @@
                         });
                     }
 
-                  function showAll() {
-    // find active button
-    const activeBtn = document.querySelector('.toggle-btn.active');
+                    function showAll() {
+                        // find active button
+                        const activeBtn = document.querySelector('.toggle-btn.active');
 
-    if (!activeBtn) return;
+                        if (!activeBtn) return;
 
-    const company = activeBtn.dataset.company;
+                        const company = activeBtn.dataset.company;
 
-    // redirect based on active tab
-    if (company === 'leetx') {
-        window.location.href = "leetx-applications.html"; // change this
-    } else if (company === 'centronsys') {
-        window.location.href = "centronsys-applications.html"; // change this
-    }
-}
+                        // redirect based on active tab
+                        if (company === 'leetx') {
+                            window.location.href = "leetx-applications.html"; // change this
+                        } else if (company === 'centronsys') {
+                            window.location.href = "centronsys-applications.html"; // change this
+                        }
+                    }
 
                     buttons.forEach(btn => btn.addEventListener('click', () => showPanel(btn.dataset.company)));
                     allBtn.addEventListener('click', showAll);
@@ -3106,56 +3147,57 @@
                         /* Dark Overlay */
                         z-index: -1;
                     }
-                    .support-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
 
-.support-card {
-    cursor: pointer;
-}
+                    .support-link {
+                        text-decoration: none;
+                        color: inherit;
+                        display: block;
+                    }
+
+                    .support-card {
+                        cursor: pointer;
+                    }
                 </style>
 
-             <section class="support-section">
-    <div class="containerr">
-        <h2 class="section-title">Support and Services</h2>
+                <section class="support-section">
+                    <div class="containerr">
+                        <h2 class="section-title">Support and Services</h2>
 
-        <div class="support-grid">
+                        <div class="support-grid">
 
-            <!-- Customer Service -->
-            <a href="contact.html" class="support-link">
-                <div class="support-card">
-                    <div class="icon-wrap">
-                        <i class="fas fa-headset"></i>
+                            <!-- Customer Service -->
+                            <a href="contact.html" class="support-link">
+                                <div class="support-card">
+                                    <div class="icon-wrap">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <h3>Customer Service</h3>
+                                </div>
+                            </a>
+
+                            <!-- Contact Us -->
+                            <a href="contact.html" class="support-link">
+                                <div class="support-card">
+                                    <div class="icon-wrap">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <h3>Contact Us</h3>
+                                </div>
+                            </a>
+
+                            <!-- Material Download -->
+                            <a href="contact.html" class="support-link">
+                                <div class="support-card">
+                                    <div class="icon-wrap">
+                                        <i class="fas fa-folder"></i>
+                                    </div>
+                                    <h3>Material Download</h3>
+                                </div>
+                            </a>
+
+                        </div>
                     </div>
-                    <h3>Customer Service</h3>
-                </div>
-            </a>
-
-            <!-- Contact Us -->
-            <a href="contact.html" class="support-link">
-                <div class="support-card">
-                    <div class="icon-wrap">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Contact Us</h3>
-                </div>
-            </a>
-
-            <!-- Material Download -->
-            <a href="contact.html" class="support-link">
-                <div class="support-card">
-                    <div class="icon-wrap">
-                        <i class="fas fa-folder"></i>
-                    </div>
-                    <h3>Material Download</h3>
-                </div>
-            </a>
-
-        </div>
-    </div>
-</section>
+                </section>
 
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -3163,7 +3205,7 @@
 
                     .support-section {
                         padding: 90px 20px;
-                      
+
                     }
 
                     .containerr {

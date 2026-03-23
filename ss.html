@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details Page</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --clr-bg: #f7f5f2;
+      --clr-white: #ffffff;
+      --clr-ink: #1a1814;
+      --clr-ink-mid: #4a453e;
+      --clr-ink-soft: #8a837a;
+      --clr-accent: #c8602a;
+      --clr-accent-light: #f5ece5;
+      --clr-accent-hover: #a84d20;
+      --clr-border: #e8e3dc;
+      --clr-sidebar-bg: #1a1814;
+      --clr-sidebar-txt: #f0ebe4;
+      --shadow-sm: 0 2px 8px rgba(26,24,20,.07);
+      --shadow-md: 0 8px 28px rgba(26,24,20,.11);
+      --shadow-lg: 0 20px 50px rgba(26,24,20,.14);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── BASE ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      background: var(--clr-bg);
+      font-family: var(--font-body);
+      color: var(--clr-ink);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .pd-section {
+      padding: 64px 0 96px;
+    }
+
+    /* ══════════════ LEFT / MAIN ══════════════ */
+
+    /* Hero image */
+    .pd-hero {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 32px;
+    }
+    .pd-hero img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+    .pd-hero:hover img { transform: scale(1.03); }
+    .pd-hero-badge {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: var(--clr-accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 30px;
+    }
+
+    /* Breadcrumb */
+    .pd-breadcrumb {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--clr-ink-soft);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pd-breadcrumb a { color: var(--clr-ink-soft); text-decoration: none; transition: color var(--transition); }
+    .pd-breadcrumb a:hover { color: var(--clr-accent); }
+    .pd-breadcrumb span { color: var(--clr-border); }
+
+    /* Title block */
+    .pd-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--clr-ink);
+      margin-bottom: 10px;
+    }
+    .pd-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .pd-rating { color: #f5a623; font-size: 13px; }
+    .pd-rating span { color: var(--clr-ink-mid); font-size: 12px; margin-left: 4px; }
+    .pd-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      background: var(--clr-accent-light);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .pd-lead {
+      font-size: 16px;
+      color: var(--clr-ink-mid);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      border-left: 3px solid var(--clr-accent);
+      padding-left: 18px;
+    }
+
+    /* ── CARD BASE ── */
+    .pd-card {
+      background: var(--clr-white);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--clr-border);
+      transition: transform var(--transition), box-shadow var(--transition);
+      margin-bottom: 24px;
+    }
+    .pd-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .pd-card-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--clr-ink);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pd-card-title .icon-wrap {
+      width: 34px; height: 34px;
+      background: var(--clr-accent-light);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: var(--clr-accent);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── IMAGE GRID ── */
+    .pd-img-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .pd-img-thumb {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      position: relative;
+    }
+    .pd-img-thumb img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .pd-img-thumb::after {
+      content: '\f00e';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(26,24,20,.45);
+      color: #fff;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .pd-img-thumb:hover img { transform: scale(1.06); }
+    .pd-img-thumb:hover::after { opacity: 1; }
+
+    /* ── FEATURE LIST ── */
+    .pd-feature-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 18px;
+    }
+    .pd-feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 14px;
+      color: var(--clr-ink-mid);
+    }
+    .pd-feature-list li .check {
+      margin-top: 3px;
+      color: var(--clr-accent);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ── BENEFITS GRID ── */
+    .pd-benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .pd-benefit-item {
+      background: var(--clr-bg);
+      border-radius: var(--radius-sm);
+      padding: 18px 16px;
+      border: 1px solid var(--clr-border);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .pd-benefit-item:hover {
+      background: var(--clr-accent-light);
+      border-color: var(--clr-accent);
+    }
+    .pd-benefit-item .bi-icon {
+      width: 40px; height: 40px;
+      background: var(--clr-white);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--clr-accent);
+      font-size: 16px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+    .pd-benefit-item h6 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--clr-ink);
+    }
+    .pd-benefit-item p {
+      font-size: 12px;
+      color: var(--clr-ink-soft);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* ── ADDITIONAL INFO (accordion-style tabs) ── */
+    .pd-info-tabs .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--clr-ink-mid);
+      border-radius: 8px 8px 0 0;
+      padding: 9px 18px;
+      border: 1px solid transparent;
+      transition: color var(--transition), background var(--transition);
+    }
+    .pd-info-tabs .nav-link:hover { color: var(--clr-accent); background: var(--clr-accent-light); }
+    .pd-info-tabs .nav-link.active {
+      color: var(--clr-accent);
+      background: var(--clr-white);
+      border-color: var(--clr-border) var(--clr-border) var(--clr-white);
+    }
+    .pd-tab-content {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+      padding: 22px 24px;
+      font-size: 14px;
+      color: var(--clr-ink-mid);
+      line-height: 1.75;
+    }
+    .pd-spec-table { width: 100%; font-size: 13px; }
+    .pd-spec-table tr:not(:last-child) td { border-bottom: 1px solid var(--clr-border); }
+    .pd-spec-table td { padding: 8px 10px; }
+    .pd-spec-table td:first-child { font-weight: 600; color: var(--clr-ink); width: 40%; }
+
+    /* ══════════════ SIDEBAR ══════════════ */
+    .pd-sidebar-wrap {
+      position: sticky;
+      top: 24px;
+      /* stops before footer via JS */
+    }
+
+    .pd-sidebar-box {
+      background: var(--clr-sidebar-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .pd-sidebar-header {
+      padding: 22px 24px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .pd-sidebar-header h5 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--clr-sidebar-txt);
+      margin: 0;
+      letter-spacing: -.01em;
+    }
+    .pd-sidebar-header p {
+      font-size: 12px;
+      color: rgba(240,235,228,.5);
+      margin: 4px 0 0;
+    }
+
+    .pd-sidebar-links { list-style: none; padding: 10px 0; margin: 0; }
+    .pd-sidebar-links li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 24px;
+      color: rgba(240,235,228,.75);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color var(--transition), background var(--transition), padding-left var(--transition);
+      border-left: 2px solid transparent;
+    }
+    .pd-sidebar-links li a:hover {
+      color: var(--clr-sidebar-txt);
+      background: rgba(200,96,42,.18);
+      border-left-color: var(--clr-accent);
+      padding-left: 28px;
+    }
+    .pd-sidebar-links li a .arrow {
+      font-size: 10px;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .pd-sidebar-links li a:hover .arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .pd-sidebar-links li.active a {
+      color: #fff;
+      background: rgba(200,96,42,.28);
+      border-left-color: var(--clr-accent);
+    }
+
+    .pd-sidebar-cta {
+      margin: 0 16px 16px;
+      background: var(--clr-accent);
+      border-radius: 10px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+    .pd-sidebar-cta p {
+      font-size: 12px;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 10px;
+    }
+    .pd-sidebar-cta a {
+      display: block;
+      background: #fff;
+      color: var(--clr-accent);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 9px;
+      border-radius: 7px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .pd-sidebar-cta a:hover { background: var(--clr-ink); color: #fff; }
+
+    .pd-sidebar-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,.07);
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .pd-stat {
+      padding: 16px 18px;
+      text-align: center;
+      background: var(--clr-sidebar-bg);
+    }
+    .pd-stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--clr-sidebar-txt);
+    }
+    .pd-stat span {
+      font-size: 11px;
+      color: rgba(240,235,228,.45);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── SECTION DIVIDER LABEL ── */
+    .pd-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 6px;
+    }
+
+    /* ── DIVIDER ── */
+    .pd-divider { border: none; border-top: 1px solid var(--clr-border); margin: 28px 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 991.98px) {
+      .pd-sidebar-wrap {
+        position: static !important;
+        top: unset !important;
+        margin-top: 40px;
+      }
+      .pd-feature-list,
+      .pd-benefit-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 575.98px) {
+      .pd-hero img { height: 260px; }
+      .pd-img-grid { grid-template-columns: 1fr 1fr; }
+      .pd-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║       PRODUCT DETAILS SECTION        ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section class="pd-section">
+  <div class="container-xl">
+    <div class="row g-4">
+
+      <!-- ═══════ LEFT — MAIN CONTENT (70%) ═══════ -->
+      <div class="col-lg-8">
+
+        <!-- Breadcrumb -->
+        <nav class="pd-breadcrumb" aria-label="breadcrumb">
+          <a href="#">Home</a><span>/</span>
+          <a href="#">Products</a><span>/</span>
+          <a href="#">Industrial</a><span>/</span>
+          <strong style="color:var(--clr-ink)">ProSeries X1</strong>
+        </nav>
+
+        <!-- Hero image -->
+        <div class="pd-hero">
+          <img
+            src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=1200&q=80"
+            alt="ProSeries X1 Main Product Image"/>
+          <span class="pd-hero-badge"><i class="fa-solid fa-bolt me-1"></i>New Arrival</span>
+        </div>
+
+        <!-- Title + meta -->
+        <div class="pd-section-label">Industrial Equipment</div>
+        <h1 class="pd-title">ProSeries X1 Modular Platform</h1>
+        <div class="pd-meta">
+          <div class="pd-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <span>4.6 (218 reviews)</span>
+          </div>
+          <span class="pd-tag">In Stock</span>
+          <span class="pd-tag" style="background:#e8f5e9;color:#2e7d32;">ISO Certified</span>
+        </div>
+
+        <p class="pd-lead">
+          The ProSeries X1 redefines modular engineering — engineered for high-demand environments, designed for effortless integration, and built to outlast the competition by a generation.
+        </p>
+
+        <!-- ─── Image Gallery ─── -->
+        <div class="pd-img-grid">
+          <div class="pd-img-thumb">
+            <img src="https://images.unsplash.com/photo-1565436897735-0a0ac3e8d0a2?w=400&q=80" alt="Detail 1"/>
+          </div>
+          <div class="pd-img-thumb">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80" alt="Detail 2"/>
+          </div>
+          <div class="pd-img-thumb">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" alt="Detail 3"/>
+          </div>
+        </div>
+
+        <!-- ─── Description Card ─── -->
+        <div class="pd-card">
+          <div class="pd-card-title">
+            <span class="icon-wrap"><i class="fa-solid fa-file-lines"></i></span>
+            Product Overview
+          </div>
+          <p style="color:var(--clr-ink-mid);font-size:14.5px;margin:0">
+            The ProSeries X1 Modular Platform is our flagship industrial solution designed for precision-critical applications. Featuring a die-cast aluminum chassis, adaptive load-balancing firmware, and a patented quick-connect bus architecture, the X1 enables seamless scaling from single-unit deployments to enterprise rack configurations without retooling.
+          </p>
+          <p style="color:var(--clr-ink-mid);font-size:14.5px;margin:12px 0 0">
+            Whether you're managing smart manufacturing cells, robotics integration, or high-density data centers, the X1 delivers consistent uptime, live telemetry, and remote diagnostics out of the box.
+          </p>
+        </div>
+
+        <!-- ─── Key Features Card ─── -->
+        <div class="pd-card">
+          <div class="pd-card-title">
+            <span class="icon-wrap"><i class="fa-solid fa-list-check"></i></span>
+            Key Features
+          </div>
+          <ul class="pd-feature-list">
+            <li><i class="fa-solid fa-circle-check check"></i> Modular hot-swap architecture</li>
+            <li><i class="fa-solid fa-circle-check check"></i> Real-time diagnostics dashboard</li>
+            <li><i class="fa-solid fa-circle-check check"></i> IP67 dust &amp; water resistance</li>
+            <li><i class="fa-solid fa-circle-check check"></i> -40°C to +85°C operating range</li>
+            <li><i class="fa-solid fa-circle-check check"></i> 10 Gbps data throughput</li>
+            <li><i class="fa-solid fa-circle-check check"></i> CAN bus &amp; EtherCAT support</li>
+            <li><i class="fa-solid fa-circle-check check"></i> OTA firmware updates</li>
+            <li><i class="fa-solid fa-circle-check check"></i> 5-year hardware warranty</li>
+          </ul>
+        </div>
+
+        <!-- ─── Benefits Card ─── -->
+        <div class="pd-card">
+          <div class="pd-card-title">
+            <span class="icon-wrap"><i class="fa-solid fa-gem"></i></span>
+            Why Choose X1?
+          </div>
+          <div class="pd-benefit-grid">
+            <div class="pd-benefit-item">
+              <div class="bi-icon"><i class="fa-solid fa-rocket"></i></div>
+              <h6>Zero-Downtime Deployment</h6>
+              <p>Hot-swap modules mean maintenance without halting production lines.</p>
+            </div>
+            <div class="pd-benefit-item">
+              <div class="bi-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <h6>Military-Grade Build</h6>
+              <p>Shock-resistant housing certified to MIL-STD-810H standards.</p>
+            </div>
+            <div class="pd-benefit-item">
+              <div class="bi-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h6>Predictive Analytics</h6>
+              <p>Built-in AI engine forecasts failures 72 hours before they occur.</p>
+            </div>
+            <div class="pd-benefit-item">
+              <div class="bi-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+              <h6>Universal Compatibility</h6>
+              <p>Works with all major PLC brands and industrial protocols from day one.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Additional Info Tabs ─── -->
+        <div class="pd-card">
+          <div class="pd-card-title">
+            <span class="icon-wrap"><i class="fa-solid fa-circle-info"></i></span>
+            Additional Information
+          </div>
+
+          <ul class="nav pd-info-tabs mb-0" id="pdInfoTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button">Specifications</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button">Shipping</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support" type="button">Support</button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade show active pd-tab-content" id="specs" role="tabpanel">
+              <table class="pd-spec-table">
+                <tr><td>Dimensions</td><td>280 × 190 × 65 mm</td></tr>
+                <tr><td>Weight</td><td>2.4 kg (without modules)</td></tr>
+                <tr><td>Power Supply</td><td>24 VDC, max 15 A</td></tr>
+                <tr><td>Connectivity</td><td>4× GbE, 2× SFP+, 4× USB-C</td></tr>
+                <tr><td>CPU</td><td>Quad-core ARM Cortex-A72 @ 1.8 GHz</td></tr>
+                <tr><td>Memory</td><td>8 GB LPDDR4, 64 GB eMMC</td></tr>
+                <tr><td>Certifications</td><td>CE, UL, FCC, RoHS, ATEX Zone 2</td></tr>
+              </table>
+            </div>
+            <div class="tab-pane fade pd-tab-content" id="shipping" role="tabpanel">
+              <p>Standard delivery is 5–7 business days. Express 2-day shipping is available at checkout. All units are shipped in anti-static, foam-lined cases. International orders ship via DHL Express with full customs documentation provided. Return window is 30 days from delivery.</p>
+            </div>
+            <div class="tab-pane fade pd-tab-content" id="support" role="tabpanel">
+              <p>ProSeries X1 includes 90 days of complimentary phone/email support and lifetime access to our online knowledge base. Extended service contracts (3- or 5-year) cover priority response, on-site repair, and a dedicated account engineer. Contact <a href="mailto:support@proseries.io" style="color:var(--clr-accent);">support@proseries.io</a> for assistance.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- ═══════ END LEFT ═══════ -->
+
+
+      <!-- ═══════ RIGHT — STICKY SIDEBAR (30%) ═══════ -->
+      <div class="col-lg-4">
+        <div class="pd-sidebar-wrap" id="pdSidebar">
+          <div class="pd-sidebar-box">
+
+            <!-- Header -->
+            <div class="pd-sidebar-header">
+              <h5><i class="fa-solid fa-layer-group me-2" style="color:var(--clr-accent);font-size:14px;"></i>Product Categories</h5>
+              <p>Browse related products &amp; series</p>
+            </div>
+
+            <!-- Links -->
+            <ul class="pd-sidebar-links">
+              <li class="active">
+                <a href="#">ProSeries X1 Platform <i class="fa-solid fa-arrow-right arrow"></i></a>
+              </li>
+              <li><a href="#">ProSeries X2 Plus <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+              <li><a href="#">Control Modules <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+              <li><a href="#">Sensor Arrays <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+              <li><a href="#">Power Distribution Units <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+              <li><a href="#">Industrial Enclosures <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+              <li><a href="#">Accessories &amp; Cables <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+              <li><a href="#">Software Licenses <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+            </ul>
+
+            <!-- CTA -->
+            <div class="pd-sidebar-cta">
+              <p>Need a custom configuration for your project?</p>
+              <a href="#"><i class="fa-solid fa-envelope me-1"></i> Request a Quote</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="pd-sidebar-stats">
+              <div class="pd-stat">
+                <strong>4,800+</strong>
+                <span>Units Sold</span>
+              </div>
+              <div class="pd-stat">
+                <strong>99.7%</strong>
+                <span>Uptime SLA</span>
+              </div>
+              <div class="pd-stat">
+                <strong>42</strong>
+                <span>Countries</span>
+              </div>
+              <div class="pd-stat">
+                <strong>5 yr</strong>
+                <span>Warranty</span>
+              </div>
+            </div>
+
+          </div><!-- /pd-sidebar-box -->
+        </div><!-- /pd-sidebar-wrap -->
+      </div>
+      <!-- ═══════ END RIGHT ═══════ -->
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  /* ── Sticky sidebar: stop before footer ── */
+  (function () {
+    const sidebar = document.getElementById('pdSidebar');
+    const section = document.querySelector('.pd-section');
+    if (!sidebar || !section) return;
+
+    function clampSidebar() {
+      if (window.innerWidth < 992) return; // disabled on mobile/tablet
+      const sectionBottom = section.getBoundingClientRect().bottom + window.scrollY;
+      const sidebarH = sidebar.offsetHeight;
+      const maxTop = sectionBottom - sidebarH - 24;
+      const scrolled = window.scrollY;
+
+      if (scrolled + 24 + sidebarH >= sectionBottom - 16) {
+        sidebar.style.position = 'absolute';
+        sidebar.style.top = (maxTop - section.offsetTop) + 'px';
+      } else {
+        sidebar.style.position = 'sticky';
+        sidebar.style.top = '24px';
+      }
+    }
+
+    // Make parent relative for absolute fallback
+    section.style.position = 'relative';
+    window.addEventListener('scroll', clampSidebar, { passive: true });
+    window.addEventListener('resize', clampSidebar);
+  })();
+</script>
+</body>
+</html>
