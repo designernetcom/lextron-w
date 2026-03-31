@@ -28,6 +28,8 @@
         <!--====== Default css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
         
     </head>
     <body>
@@ -71,13 +73,27 @@
                             </div>
                         </div>
                         <!--=== Main Menu ===-->
-                   <nav class="main-menu">
-<ul>
+                        <nav class="main-menu">
+                            <ul>
 
-<li class="menu-item"><a href="index.html">Home</a></li>
-<li class="menu-item"><a href="about.html">About Us</a></li>
+                                <li class="menu-item"><a href="index.html">Home</a></li>
+                                <li class="menu-item"><a href="about.html">About Us</a></li>
+                                <style>
+                                    @media (max-width: 768px) {
+                                        .header-navigation .main-menu ul li .sub-menu {
+                                            width: 100% !important;
+                                            max-width: 100%;
+                                            left: 0;
+                                            right: 0;
+                                        }
 
-<li class="menu-item-has-children">
+                                        .header-navigation .main-menu ul li .sub-menu li a {
+                                            padding: 10px 15px;
+                                            font-size: 14px;
+                                        }
+                                    }
+                                </style>
+                                <li class="menu-item-has-children">
                                     <a href="#">Our Products</a>
                                     <ul class="sub-menu">
                                         <li class="menu-item-has-children">
@@ -159,115 +175,11 @@ Flow Meter
 
                                 <li class="menu-item"><a href="contact.html">Contact Us</a></li>
 
-</ul>
-</nav>
+                            </ul>
+                        </nav>
 
 
-<style>
-    .main-menu ul{
-list-style:none;
-margin:0;
-padding:0;
-}
 
-.main-menu li{
-position:relative;
-}
-
-.main-menu a{
-display:block;
-padding:12px 20px;
-text-decoration:none;
-}
-
-/* hide dropdown */
-.sub-menu{
-display:none;
-background:#fff;
-min-width:220px;
-}
-
-/* desktop */
-@media(min-width:992px){
-
-.main-menu > ul > li{
-display:inline-block;
-}
-
-.sub-menu{
-position:absolute;
-}
-
-.sub-menu li .sub-menu{
-left:100%;
-top:0;
-position:absolute;
-}
-
-.main-menu li:hover > .sub-menu{
-display:block;
-}
-
-}
-
-/* mobile */
-@media(max-width:991px){
-
-.main-menu li{
-display:block;
-}
-
-.sub-menu{
-position:static;
-width:100%;
-}
-
-
-}
-
-@media(max-width:991px){
-
-.sub-menu{
-display:none;
-position:static;
-width:100%;
-background:#fff;
-}
-
-.sub-menu.show{
-display:block;
-}
-
-}
-</style>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-const dropdownLinks = document.querySelectorAll(".menu-item-has-children > a");
-
-dropdownLinks.forEach(function(link){
-
-link.addEventListener("click", function(e){
-
-if(window.innerWidth <= 991){
-
-e.preventDefault(); // stop # in URL
-
-let parent = this.parentElement;
-let submenu = parent.querySelector(".sub-menu");
-
-if(submenu){
-submenu.classList.toggle("show");
-}
-
-}
-
-});
-
-});
-
-});
-</script>
 
 
                         <!--=== Nav Button ===-->
@@ -325,35 +237,37 @@ submenu.classList.toggle("show");
                                         </div>
                                         <p class="mb-20" data-aos="fade-up" data-aos-duration="1000">Have a question about our joining and automation solutions? Our team at Lextron Join Tech is here to help. Reach out to us for product inquiries, technical support, or partnership opportunities.</p>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="info-list mb-15" data-aos="fade-up" data-aos-duration="1000">
-                                                    <h6>Call Center:</h6>
-                                                    <p><a href="tel:+163217322978">+163 2173 22978</a></p>
-                                                    <p><a href="tel:+163217322978">+163 2173 22979</a></p>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="info-list mb-15" data-aos="fade-up" data-aos-duration="1100">
-                                                    <h6>Our Location:</h6>
-                                                    <p>Apple Upper West Side, Brooklyn</p>
+                                                    <h6>Office Address:</h6>
+                                                    <p>Flat No. A1-301, Sai Kasturi Apartment, Dakshin Laxmi Nagar, Gat No. 605, Moshi, Pune – 412105</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="info-list mb-15" data-aos="fade-up" data-aos-duration="1200">
-                                                    <h6>Our Social:</h6>
-                                                    <div class="social-box mt-10">
+                                                    <h6>Shop Address:</h6>
+                                                    <p>Shop no. 307, Adi Prime complex, MRMP+FH4, MIDC, Moshi, Pimpri-Chinchwad, Maharashtra 411070</p>
+                                                    <!-- <div class="social-box mt-10">
                                                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                                                         <a href="#"><i class="fab fa-twitter"></i></a>
                                                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                                                         <a href="#"><i class="fab fa-youtube"></i></a>
-                                                    </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="info-list mb-15" data-aos="fade-up" data-aos-duration="1000">
+                                                    <h6>Call Center:</h6>
+                                                    <p><a href="tel:9175914144">+91 9175914144</a></p>
+                                                    <p><a href="tel:9175914188">+91 9175914188</a></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="info-list mb-15" data-aos="fade-up" data-aos-duration="1300">
                                                     <h6>Our Email:</h6>
-                                                    <p><a href="mailto:evenzahelp@gmail.com">sales@gmail.com</a></p>
-                                                    <p><a href="mailto:evenzahelp@gmail.com">support@Info.com</a></p>
+                                                    <p><a href="mailto:info@lextron.in">info@lextron.in</a></p>
+                                                    <p><a href="mailto:sales@lextron.in">sales@lextron.in</a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -412,7 +326,7 @@ submenu.classList.toggle("show");
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <button class="theme-btn gradient-btn">Send Message<i class="far fa-arrow-right"></i></button>
+                                                        <button class="theme-btn gradient-btn">Send Message</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -447,126 +361,176 @@ submenu.classList.toggle("show");
                         }
                 </style>
                 <!--======  Start Footer  ======-->
-                 <footer class="main-footer bg_cover"
-                data-src="https://www.leetx.com/en/web/upload/2024/07/24/17217937863513gtgyh.png">
-
-
-                <!--=== Footer Bottom Wrapper ===-->
-                <div class="footer-bottom-wrapper bg_cover" data-src="assets/images/footer/footer-widget-bg.jpg">
-                    <div class="container">
-                        <!--=== Footer Widget Area ===-->
-                        <div class="footer-widget-area  ">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 order-1">
-                                    <!--=== Footer Widget ===-->
-                                    <div class="footer-widget footer-about-widget mb-40" data-aos="fade-up"
-                                        data-aos-duration="800">
-                                        <div class="widget-content">
-                                            <div class="footer-logo mb-30">
-                                                <a href=""><img style="height: 100px;" src="assets/logo.png"
-                                                        alt="Brand Logo"></a>
-                                            </div>
-                                            <p>Lextron Join Tech is an emerging industrial automation and assembly
-                                                solutions provider in India, specializing in advanced joining
-                                                technologies</p>
-                                            <div class="social-box">
+                 <footer
+          class="main-footer bg_cover"
+          data-src="https://www.leetx.com/en/web/upload/2024/07/24/17217937863513gtgyh.png"
+        >
+          <!--=== Footer Bottom Wrapper ===-->
+          <div
+            class="footer-bottom-wrapper bg_cover"
+            data-src="assets/images/footer/footer-widget-bg.jpg"
+          >
+            <div class="container">
+              <!--=== Footer Widget Area ===-->
+              <div class="footer-widget-area">
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                    <!--=== Footer Widget ===-->
+                    <div
+                      class="footer-widget footer-about-widget mb-40"
+                      data-aos="fade-up"
+                      data-aos-duration="800"
+                    >
+                      <div class="widget-content">
+                        <div class="footer-logo mb-30">
+                          <a href=""
+                            ><img
+                              style="height: 100px"
+                              src="assets/logo.png"
+                              alt="Brand Logo"
+                          /></a>
+                        </div>
+                        <p>
+                          Lextron Join Tech is an emerging industrial automation
+                          and assembly solutions provider in India, specializing
+                          in advanced joining technologies
+                        </p>
+                        <!-- <div class="social-box">
                                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                                                 <a href="#"><i class="fab fa-youtube"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 col-md-12 order-3 order-lg-2">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <!--=== Footer Widget ===-->
-                                            <div class="footer-widget footer-nav-widget mb-40" data-aos="fade-up"
-                                                data-aos-duration="1000">
-                                                <div class="widget-content">
-                                                    <h4 class="widget-title" style="margin-bottom: 20px;">Quick Links
-                                                    </h4>
-                                                    <!-- <div class="line-wrap"><span></span><span></span><span></span></div> -->
-                                                    <ul class="widget-nav">
+                                            </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-12">
+                    <div
+                      class="footer-widget footer-nav-widget mb-40"
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                    >
+                      <div class="widget-content">
+                        <h4 class="widget-title" style="margin-bottom: 20px">
+                          Our Products
+                        </h4>
+                        <!-- <div class="line-wrap"><span></span><span></span><span></span></div> -->
+                        <!-- <ul class="widget-nav">
                                                         <li><a href="">Home</a></li>
                                                         <li><a href="">About Us</a></li>
                                                         <li><a href="">Services</a></li>
                                                         <li><a href="">Projects</a></li>
                                                         <li><a href="">Latest Blog</a></li>
                                                         <li><a href="">Contact</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!--=== Footer Widget ===-->
-                                            <div class="footer-widget footer-nav-widget mb-40" data-aos="fade-up"
-                                                data-aos-duration="1200">
-                                                <div class="widget-content">
-                                                    <h4 class="widget-title" style="margin-bottom: 20px;">Our Products
-                                                    </h4>
-                                                    <!-- <div class="line-wrap"><span></span><span></span><span></span></div> -->
-                                                    <ul class="widget-nav">
-                                                        <li><a href="">Transducerized Screw Tightening</a></li>
-                                                        <li><a href="">Feeding Systems</a></li>
-                                                        <li><a href="">Servo Press Systems</a></li>
-                                                        <li><a href="">Glue & Adhesive Dispensing Systems</a></li>
-                                                        <!-- <li><a href="">Language Processing</a></li>
-                                                        <li><a href="">Computer Vision</a></li> -->
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 order-2 order-lg-3">
-                                    <!--=== Footer Widget ===-->
-                                    <div class="footer-widget footer-contact-info-widget mb-40" data-aos="fade-up"
-                                        data-aos-duration="1400">
-                                        <div class="widget-content">
-                                            <h4 class="widget-title" style="margin-bottom: 20px;">Contact us </h4>
-                                            <!-- <div class="line-wrap"><span></span><span></span><span></span></div> -->
-                                            <div class="orbia-info-box style-two mb-20">
-                                               
-                                                <div class="info">
-                                                    <p>9550 Bolsa Ave #126, Pune</p>
-                                                </div>
-                                            </div>
-                                            <div class="orbia-info-box style-two mb-20">
-                                               
-                                                <div class="info">
-                                                    <p><a href="mailto:info@touron.com">info@lextron.com</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="orbia-info-box style-two mb-20">
-                                               
-                                                <div class="info">
-                                                    <p><a href="tel:(+256)214203215">+91 214 203 215</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--=== Copyright Area ===-->
-                        <div class="copyright-area">
-                            <div class="row">
-                                <div class="col-lg-12"
-                                    style="display: flex; align-items: center; justify-content: center;">
-                                    <!--=== Copyright Text ===-->
-                                    <div class="copyright-text text-lg-start text-center">
-                                        <p>All Rights Reserved Designed & Developed By Netcom Business Solutions Pvt Ltd
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                                                    </ul> -->
+                        <ul class="widget-nav">
+                          <li>
+                            <a href="">Transducerized Screw Tightening</a>
+                          </li>
+                          <li><a href="">Feeding Systems</a></li>
+                          <li><a href="">Servo Press Systems</a></li>
+                          <li>
+                            <a href="">Glue & Adhesive Dispensing Systems</a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col-lg-2 col-md-6">
+                    <!--=== Footer Widget ===-->
+                    <div
+                      class="footer-widget footer-contact-info-widget mb-40"
+                      data-aos="fade-up"
+                      data-aos-duration="1400"
+                    >
+                      <div class="widget-content">
+                        <h4 class="widget-title" style="margin-bottom: 20px">
+                          Contact us
+                        </h4>
+                        <!-- <div class="line-wrap"><span></span><span></span><span></span></div> -->
+
+                        <div class="orbia-info-box style-two mb-20">
+                          <div class="info">
+                            <p><b>Phone Number:</b></p>
+                            <p><a href="tel:9175914144">+91 9175914144</a></p>
+                            <p><a href="tel:9175914188">+91 9175914188</a></p>
+                          </div>
+                        </div>
+                        <hr />
+                        <div class="orbia-info-box style-two mb-20">
+                          <div class="info">
+                            <p><b>Email:</b></p>
+                            <p>
+                              <a href="mailto:info@lextron.in"
+                                >info@lextron.in</a
+                              >
+                            </p>
+
+                            <p>
+                              <a href="mailto:sales@lextron.in"
+                                >sales@lextron.in</a
+                              >
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-12">
+                    <div
+                      class="footer-widget footer-nav-widget mb-40"
+                      data-aos="fade-up"
+                      data-aos-duration="1200"
+                    >
+                      <div class="widget-content">
+                        <h4 class="widget-title" style="margin-bottom: 20px">
+                          Address
+                        </h4>
+                        <div class="orbia-info-box style-two mb-20">
+                          <div class="info">
+                            <p>
+                              <b>Office Address:</b> Flat No. A1-301, Sai
+                              Kasturi Apartment, Dakshin Laxmi Nagar, Gat No.
+                              605, Moshi, Pune – 412105
+                            </p>
+                            <hr />
+                            <p>
+                              <b>Shop Address:</b> Shop no. 307, Adi Prime
+                              complex, MRMP+FH4, MIDC, Moshi, Pimpri-Chinchwad,
+                              Maharashtra 411070
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </footer><!--======  End Footer  ======-->
+              </div>
+              <!--=== Copyright Area ===-->
+              <div class="copyright-area">
+                <div class="row">
+                  <div
+                    class="col-lg-12"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <!--=== Copyright Text ===-->
+                    <div class="copyright-text text-lg-start text-center">
+                      <p>
+                        All Rights Reserved Designed & Developed By Netcom
+                        Business Solutions Pvt Ltd
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer><!--======  End Footer  ======-->
             </div>
         </div>
         <script src="assets/js/plugins/jquery-3.7.1.min.js"></script>
